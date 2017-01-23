@@ -27,7 +27,6 @@ const redditAuth = new snoowrap({
   password: env.password
 });
 
-topPosts = redditAuth.getHot().map(post => post.title).then(console.log);
 
 
 app.set('view engine','ejs')
@@ -37,6 +36,11 @@ app.listen(3000, function() {
 })
 
 app.get('/', (req,res) => {
-		//render index.ejs
-		res.render('index.ejs')
+		
+		var logmystuff = function(input) {
+			console.dir(input);
+			res.render('index.ejs',{items: input})
+		}
+
+		topPosts = redditAuth.getSubreddit('buildapcsales').getHot().map(post => post.title).then(function(data){logmystuff(data)});
 })
