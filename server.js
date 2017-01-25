@@ -63,7 +63,10 @@ app.get('/', (req,res) => {
 				str.model.push(input[i].substring(firstModelIndex,secondModelIndex));
 
 				var firstPriceIndex = input[i].indexOf('$')+1
-				//crap how do I know where the price ends
+				//crap how do I know where the price ends. !! All the titles have (discount calculation) after the price.
+				//Find the first instance of '('. The characters before that are the price. Some titles have no '(' or ')'.
+				// If that's the case just use the rest of the string.
+				// if( input[i].)
 				// var secondPriceIndex = input[i].
 
 			}
