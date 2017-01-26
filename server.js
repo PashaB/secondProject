@@ -59,7 +59,13 @@ app.get('/', (req,res) => {
 
 				//sometimes users do not add $ and this creates a bad object. Will have to account for this later
 				var firstModelIndex = input[i].indexOf(']') + 2
-				var secondModelIndex = input[i].indexOf('$') - 3;
+				if(input[i].substring(1,input[i].indexOf('$')).includes('-')) { //Sometimes people skip the [product - $price] format.
+					//YO YOU CAN TRIM() TO GET RID OF WHITESPACES DO THAT LATER
+					var secondModelIndex = input[i].indexOf('$') - 3;
+				} else {
+					var secondModelIndex = input[i].indexOf('$') -1;
+				}
+				
 				str.model.push(input[i].substring(firstModelIndex,secondModelIndex));
 
 				var firstPriceIndex = input[i].indexOf('$')+1
