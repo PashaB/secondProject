@@ -69,6 +69,9 @@ app.get('/', (req,res) => {
 				// if( input[i].)
 				// var secondPriceIndex = input[i].
 
+				//Eventually send model/product name/number to amazon api to reliably find the same product. 
+				//Then update the price with the amazon price. Then we can graph it. 
+
 			}
 
 			console.dir(str.model);
