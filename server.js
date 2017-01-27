@@ -53,11 +53,21 @@ app.get('/', (req,res) => {
 			{
 				// test
 				// console.log(input[i]);
+				//IMPORTANT
+				// NAME YOUR VARIABLES SOMETHING NOT GENERIC CHANGE YOUR OBJECT FROM STR WHAT ARE YOU A PLEB
+				//ALSO 
+				//WHEN YOU PARSE THE STRING, REMOVE THAT PART FROM THE STRING. GOT THE TYPE? REMOVE TYPE FROM THE STRING
+				//DONT BE A PLEB
+				//MINIMIZE EVERYTHING.There's no reason to read the entire string. If you read that part of the string
+				//and processed it, delete it. Make sure to trim again after you substring!
+
+				input[i] = input[i].trim(); //Added and not tested
 				var firstTypeIndex = input[i].indexOf('[') + 1;
 				var secondTypeIndex = input[i].indexOf(']');
 				str.type.push(input[i].substring(firstTypeIndex,secondTypeIndex));
 
 				//sometimes users do not add $ and this creates a bad object. Will have to account for this later
+
 				var firstModelIndex = input[i].indexOf(']') + 2
 				if(input[i].substring(1,input[i].indexOf('$')).includes('-')) { //Sometimes people skip the [product - $price] format.
 					//YO YOU CAN TRIM() TO GET RID OF WHITESPACES DO THAT LATER
