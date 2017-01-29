@@ -99,7 +99,7 @@ app.get('/', (req,res) => {
 
 			}
 
-			console.dir(str);
+			// console.dir(str);
 
 
 			//send the object
