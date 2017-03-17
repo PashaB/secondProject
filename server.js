@@ -40,6 +40,7 @@ app.get('/', (req,res) => {
 		var logmystuff = function(input) {
 			
 			//Function to modify the string, this string will eventually replace input as the object sent over to index.ejs
+			// This is the sales object
 			var str = {
 				type: [],
 				model: [],
@@ -67,8 +68,15 @@ app.get('/', (req,res) => {
 				var firstTypeIndex = input[i].indexOf('[') + 1;
 				var secondTypeIndex = input[i].indexOf(']');
 
+				//push the type of product to the 'type' part of our sales object
 				str.type.push(input[i].substring(firstTypeIndex,secondTypeIndex));
 				console.dir(input[i].substring(firstTypeIndex,secondTypeIndex))
+
+				//delete part of processed string
+				input[i] = input[i].substring(secondTypeIndex+1,input[i].length);
+
+				//show me
+				console.dir('The remaining string is:'+input[i]);
 
 				//sometimes users do not add $ and this creates a bad object. Will have to account for this later
 
@@ -77,6 +85,11 @@ app.get('/', (req,res) => {
 
 				str.model.push(input[i].substring(firstModelIndex,secondModelIndex));
 				console.dir(input[i].substring(firstModelIndex,secondModelIndex))
+
+				//delete part of processed string
+				input[i] = input[i].substring(secondModelIndex+1,input[i].length);
+
+				console.dir('The remaining string is:'+input[i]);
 
 				var firstPriceIndex = input[i].indexOf('$')+1
 				var secondPriceIndex = input[i].indexOf('(');
